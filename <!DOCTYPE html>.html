@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AeroPulse</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/leaflet.terminator"></script>
+</head>
+<body>
+  <!-- Splash Screen -->
+  <div id="splash">
+    <img src="assets/logo.png" alt="AeroPulse Logo" />
+    <div class="loader"></div>
+  </div>
+
+  <!-- Top Bar -->
+  <div id="top-bar">
+    <div id="analytics">
+      <span id="flight-count">Planes: 0</span> | <span id="busy-region">Most Active: —</span>
+    </div>
+    <input type="text" id="search-input" placeholder="Search by callsign or ICAO24..." />
+    <select id="region-filter">
+      <option value="">All Regions</option>
+      <option value="Europe">Europe</option>
+      <option value="North America">North America</option>
+      <option value="Asia">Asia</option>
+      <option value="South America">South America</option>
+      <option value="Africa">Africa</option>
+      <option value="Oceania">Oceania</option>
+    </select>
+    <button id="toggle-darkmode">🌙</button>
+    <button id="toggle-settings">⚙️</button>
+  </div>
+
+  <!-- Settings Sidebar -->
+  <div id="settings-sidebar" class="hidden">
+    <h2>Settings</h2>
+    <label><input type="checkbox" id="toggle-weather" /> Show Weather Overlay</label><br />
+    <label><input type="checkbox" id="toggle-follow" /> Follow Selected Flight</label><br />
+    <label>
+      Update Interval (seconds):
+      <input type="number" id="update-interval" min="5" max="60" value="15" />
+    </label>
+    <h3>Alerts</h3>
+    <label>
+      Altitude Drop Alert (meters):
+      <input type="number" id="alert-altitude-drop" min="100" max="5000" value="500" />
+    </label><br />
+    <button id="close-settings">Close</button>
+  </div>
+
+  <!-- Map Container -->
+  <div id="map"></div>
+
+  <!-- Info panel -->
+  <div id="info-panel" class="hidden">
+    <img id="plane-img" src="" alt="Plane photo" />
+    <div id="plane-details"></div>
+    <button id="save-flight">Save Flight</button>
+  </div>
+
+  <!-- Bookmarks Sidebar -->
+  <div id="bookmarks-sidebar" class="hidden">
+    <h2>Saved Flights</h2>
+    <ul id="saved-flights-list"></ul>
+  </div>
+
+  <!-- AdSense Top -->
+  <div class="ad ad-top"><!-- AdSense placeholder --></div>
+  <div class="ad ad-sidebar"><!-- AdSense placeholder --></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
