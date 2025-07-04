@@ -1,0 +1,20 @@
+{
+  "airports": [
+    {
+      "id": "JFK",
+      "name": "John F. Kennedy International Airport",
+      "city": "New York",
+      "country": "USA",
+      "lat": 40.6413,
+      "lon": -73.7781
+    },
+    {
+      "id": "LHR",
+      "name": "London Heathrow Airport",
+      "city": "London",
+      "country": "UK",
+      "lat": 51.47,
+      "lon": -0.4543
+    }
+  ]
+}

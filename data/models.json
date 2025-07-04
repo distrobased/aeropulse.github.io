@@ -1,0 +1,16 @@
+{
+  "models": [
+    {
+      "id": "A320",
+      "manufacturer": "Airbus",
+      "name": "A320",
+      "image": "images/manufacturers/airbus/a320.jpg"
+    },
+    {
+      "id": "B737",
+      "manufacturer": "Boeing",
+      "name": "737",
+      "image": "images/manufacturers/boeing/737.jpg"
+    }
+  ]
+}

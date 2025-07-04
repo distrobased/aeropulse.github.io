@@ -1,0 +1,22 @@
+{
+  "airlines": [
+    {
+      "id": "AAL",
+      "name": "American Airlines",
+      "country": "USA",
+      "logo": "images/airlines/american_airlines.png"
+    },
+    {
+      "id": "DAL",
+      "name": "Delta Airlines",
+      "country": "USA",
+      "logo": "images/airlines/delta_airlines.png"
+    },
+    {
+      "id": "BAW",
+      "name": "British Airways",
+      "country": "UK",
+      "logo": "images/airlines/british_airways.png"
+    }
+  ]
+}

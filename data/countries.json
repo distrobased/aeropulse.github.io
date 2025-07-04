@@ -1,0 +1,14 @@
+{
+  "countries": [
+    {
+      "code": "USA",
+      "name": "United States",
+      "flag": "\ud83c\uddfa\ud83c\uddf8"
+    },
+    {
+      "code": "UK",
+      "name": "United Kingdom",
+      "flag": "\ud83c\uddec\ud83c\udde7"
+    }
+  ]
+}
