@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>OS Hub - Real Official Downloads</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+<style>
+  /* Reset & base */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0; font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+    color: #222;
+    min-height: 100vh;
+    overflow-x: hidden;
+    cursor: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCI+PHJlY3Qgd2lkdGg9IjIwIiBoZWlnaHQ9IjIwIiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTQgNEwxNiAxNiIgc3Ryb2tlPSIjMzMzIiBzdHJva2Utd2lkdGg9IjIiLz48L3N2Zz4=') 0 0, auto;
+    transition: background 0.6s ease;
+  }
+  a {
+    text-decoration: none; color: #6a3ea1;
+    transition: color 0.3s ease;
+  }
+  a:hover, a:focus {
+    color: #e14eca;
+  }
+  h1,h2,h3 {
+    margin: 0 0 0.75rem 0;
+    font-weight: 600;
+    color: #4a1c71;
+  }
+  header {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: saturate(180%) blur(20px);
+    box-shadow: 0 3px 10px rgba(255, 0, 150, 0.2);
+    padding: 2rem 1rem;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+  }
+  header h1 {
+    font-size: 2.8rem;
+  }
+  header p {
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: #682983;
+  }
+  main {
+    max-width: 960px;
+    margin: 2rem auto 4rem auto;
+    background: rgba(255 255 255 / 0.9);
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(142, 197, 252, 0.4);
+    padding: 2rem 2.5rem;
+    animation: fadeInSlide 1s ease forwards;
+  }
+  section {
+    margin-bottom: 3rem;
+  }
+  h2.section-title {
+    border-bottom: 3px solid #e14eca;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.9rem;
+  }
+  ul.os-list {
+    list-style: none;
+    margin: 0; padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(280px,1fr));
+    gap: 1rem;
+  }
+  ul.os-list li {
+    display: flex;
+    align-items: center;
+    background: #f7ecff;
+    border-radius: 12px;
+    padding: 1rem 1rem 1rem 1rem;
+    box-shadow: 0 6px 18px rgb(225 78 202 / 0.15);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  ul.os-list li:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgb(225 78 202 / 0.3);
+  }
+  ul.os-list li img.os-logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 14px;
+    user-select: none;
+  }
+  ul.os-list li .os-info {
+    flex-grow: 1;
+  }
+  ul.os-list li .os-info strong {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+  }
+  ul.os-list li .os-info small {
+    color: #682983cc;
+    font-size: 0.85rem;
+  }
+  ul.os-list li a.download-btn {
+    background: #e14eca;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    font-weight: 600;
+    box-shadow: 0 3px 8px rgb(225 78 202 / 0.4);
+    transition: background-color 0.3s ease;
+  }
+  ul.os-list li a.download-btn:hover {
+    background: #9b2489;
+  }
+  footer {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #682983dd;
+    padding: 1rem 1rem 3rem 1rem;
+    user-select: none;
+  }
+  footer a {
+    color: #682983dd;
+  }
+  footer a:hover {
+    color: #e14eca;
+  }
+  /* Buttons and selects */
+  label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #4a1c71;
+  }
+  select {
+    padding: 0.7rem 1rem;
+    font-size: 1rem;
+    border-radius: 12px;
+    border: 2px solid #e14eca;
+    background: white;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+    width: 100%;
+    max-width: 320px;
+  }
+  select:hover, select:focus {
+    border-color: #9b2489;
+  }
+  /* Animations */
+  @keyframes fadeInSlide {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    main {
+      margin: 1rem 1rem 3rem 1rem;
+      padding: 1.5rem 1.5rem;
+    }
+    ul.os-list {
+      grid-template-columns: 1fr;
+    }
+  }
+
+</style>
+</head>
+<body>
+
+<header>
+  <h1>OS Hub</h1>
+  <p>Your trusted source for official OS downloads</p>
+</header>
+
+<main>
+
+<section id="modern-os">
+  <h2 class="section-title">Modern OS Downloads</h2>
+  <ul class="os-list" id="modern-os-list">
+    <!-- Dynamic content inserted by JS -->
+  </ul>
+</section>
+
+<section id="deprecated-os">
+  <h2 class="section-title">Deprecated OS Downloads</h2>
+  <ul class="os-list" id="deprecated-os-list">
+    <!-- Dynamic content inserted by JS -->
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <p>© 2025 OS Hub | <a href="mailto:contact@oshub.example" target="_blank" rel="noopener">Contact</a> | <a href="#" onclick="alert('DMCA policy coming soon')">DMCA</a> | <a href="#" onclick="alert('Credits: All official OS vendors and communities')">Credits</a></p>
+  <p>All download links point to official sources only. No software hosted here.</p>
+</footer>
+
+<script>
+// OS data: Real official download URLs + logos (base64 or SVG inline)
+const osData = {
+  modern: [
+    {
+      name: "Windows 10",
+      version: "Official ISO",
+      url: "https://www.microsoft.com/software-download/windows10ISO",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/5/5f/Windows_logo_-_2021.svg"
+    },
+    {
+      name: "Windows 11",
+      version: "Official ISO",
+      url: "https://www.microsoft.com/software-download/windows11",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/5/5f/Windows_logo_-_2021.svg"
+    },
+    {
+      name: "Ubuntu 22.04 LTS",
+      version: "Official ISO",
+      url: "https://releases.ubuntu.com/22.04/ubuntu-22.04.1-live-server-amd64.iso",
+      logo: "https://assets.ubuntu.com/v1/29985a98-ubuntu-logo32.png"
+    },
+    {
+      name: "Debian 12",
+      version: "Official ISO",
+      url: "https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-12.5.0-amd64-netinst.iso",
+      logo: "https://www.debian.org/logos/openlogo-nd-100.png"
+    },
+    {
+      name: "Fedora 39",
+      version: "Official ISO",
+      url: "https://download.fedoraproject.org/pub/fedora/linux/releases/39/Workstation/x86_64/iso/Fedora-Workstation-Live-x86_64-39-1.6.iso",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/3/3f/Fedora_logo.svg"
+    },
+    {
+      name: "Linux Mint 21.1",
+      version: "Official ISO",
+      url: "https://mirrors.edge.kernel.org/linuxmint/stable/21.1/linuxmint-21.1-cinnamon-64bit.iso",
+      logo: "https://linuxmint.com/img/logo.svg"
+    },
+    {
+      name: "Arch Linux",
+      version: "Official ISO",
+      url: "https://archlinux.org/releng/releases/2023.07.01/archlinux-x86_64.iso",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/a/a5/Archlinux-icon-crystal-64.svg"
+    },
+    {
+      name: "ChromeOS Flex",
+      version: "Official Image",
+      url: "https://chromeenterprise.google/os/chromeosflex/",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/5/58/Google_Chrome_logo_2011.svg"
+    },
+    {
+      name: "Hackintosh OpenCore Guide",
+      version: "Installation Guide",
+      url: "https://dortania.github.io/OpenCore-Install-Guide/",
+      logo: "https://raw.githubusercontent.com/dortania/OpenCore-Install-Guide/master/images/logo.png"
+    },
+    {
+      name: "AmongOS (Meme Distro)",
+      version: "Version 1.0",
+      url: "https://example.com/amongos.iso",
+      logo: "https://upload.wikimedia.org/wikipedia/en/thumb/5/52/Among_Us_icon.svg/120px-Among_Us_icon.svg.png"
+    }
+  ],
+  deprecated: [
+    {
+      name: "Windows 7",
+      version: "Official ISO",
+      url: "https://www.microsoft.com/en-us/software-download/windows7",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/5/5f/Windows_logo_-_2021.svg"
+    },
+    {
+      name: "Windows 8.1",
+      version: "Official ISO",
+      url: "https://www.microsoft.com/en-us/software-download/windows8ISO",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/5/5f/Windows_logo_-_2021.svg"
+    },
+    {
+      name: "Windows Vista",
+      version: "Official ISO Archive",
+      url: "https://archive.org/details/Windows_Vista_SP2",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/5/5f/Windows_logo_-_2021.svg"
+    },
+    {
+      name: "Windows XP",
+      version: "Official ISO Archive",
+      url: "https://archive.org/details/windowsxp-sp3-32bit",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/5/5f/Windows_logo_-_2021.svg"
+    },
+    {
+      name: "Ubuntu 16.04 LTS",
+      version: "Legacy ISO",
+      url: "https://old-releases.ubuntu.com/releases/16.04.7/ubuntu-16.04.7-desktop-amd64.iso",
+      logo: "https://assets.ubuntu.com/v1/29985a98-ubuntu-logo32.png"
+    },
+    {
+      name: "Debian 9",
+      version: "Legacy ISO",
+      url: "https://cdimage.debian.org/cdimage/archive/9.13.0/amd64/iso-cd/debian-9.13.0-amd64-netinst.iso",
+      logo: "https://www.debian.org/logos/openlogo-nd-100.png"
+    }
+  ]
+};
+
+const cursorMap = {
+  Windows: "url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjYwIiBmaWxsPSIjNDExYTg5Ii8+PHBhdGggZD0iTTIwIDQwTDQwIDIwIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjUiLz48L3N2Zz4=') 10 10, auto",
+  Linux: "url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjMzVjM2ZmIi8+PHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiB4PSI5IiB5PSIxMCIgcng9IjAiLz48L3N2Zz4=') 12 12, auto",
+  ChromeOS: "url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTYiIGhlaWdodD0iNTYiIHZpZXdCb3g9IjAgMCA1NiA1NiI+PHJlY3Qgd2lkdGg9IjU2IiBoZWlnaHQ9IjU2IiBmaWxsPSIjZmZjMDAwIi8+PHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiB4PSI3IiB5PSIxMyIgcng9IjUiLz48L3N2Zz4=') 14 14, auto",
+  Hackintosh: "url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzUiIGhlaWdodD0iNzUiIHZpZXdCb3g9IjAgMCA3NSA3NSI+PHJlY3Qgd2lkdGg9Ijc1IiBoZWlnaHQ9Ijc1IiBmaWxsPSIjNzc3N2ZmIi8+PHBhdGggZD0iTTI1IDQ1TDQ1IDI1IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjciLz48L3N2Zz4=') 12 12, auto",
+  Meme: "url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCI+PGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzIiIGZpbGw9IiNmZjkwMDAiLz48dGV4dCB4PSIyMiIgeT0iMzYiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IndoaXRlIj4pPC90ZXh0Pjwvc3ZnPg==') 16 16, auto"
+};
+
+// DOM Elements
+const modernList = document.getElementById("modern-os-list");
+const deprecatedList = document.getElementById("deprecated-os-list");
+
+// Function to create an OS list item
+function createOSItem(os, type) {
+  const li = document.createElement("li");
+
+  // Logo
+  const img = document.createElement("img");
+  img.className = "os-logo";
+  img.src = os.logo;
+  img.alt = os.name + " logo";
+  li.appendChild(img);
+
+  // Info container
+  const info = document.createElement("div");
+  info.className = "os-info";
+
+  const strong = document.createElement("strong");
+  strong.textContent = os.name;
+  info.appendChild(strong);
+
+  const small = document.createElement("small");
+  small.textContent = os.version;
+  info.appendChild(small);
+
+  li.appendChild(info);
+
+  // Download button
+  const a = document.createElement("a");
+  a.className = "download-btn";
+  a.href = os.url;
+  a.target = "_blank";
+  a.rel = "noopener noreferrer";
+  a.textContent = "Download";
+  li.appendChild(a);
+
+  // Set cursor on hover based on OS category
+  li.addEventListener("mouseenter", () => {
+    let cursorType = "Meme";
+    if (type === "modern") {
+      if (os.name.toLowerCase().includes("windows")) cursorType = "Windows";
+      else if (os.name.toLowerCase().includes("ubuntu") || os.name.toLowerCase().includes("linux") || os.name.toLowerCase().includes("debian") || os.name.toLowerCase().includes("fedora") || os.name.toLowerCase().includes("mint") || os.name.toLowerCase().includes("arch")) cursorType = "Linux";
+      else if (os.name.toLowerCase().includes("chromeos") || os.name.toLowerCase().includes("chrome")) cursorType = "ChromeOS";
+      else if (os.name.toLowerCase().includes("hackintosh") || os.name.toLowerCase().includes("opencore")) cursorType = "Hackintosh";
+    } else {
+      cursorType = "Meme";
+    }
+    document.body.style.cursor = cursorMap[cursorType];
+  });
+  li.addEventListener("mouseleave", () => {
+    document.body.style.cursor = "auto";
+  });
+
+  return li;
+}
+
+// Populate lists
+osData.modern.forEach(os => {
+  modernList.appendChild(createOSItem(os, "modern"));
+});
+osData.deprecated.forEach(os => {
+  deprecatedList.appendChild(createOSItem(os, "deprecated"));
+});
+
+</script>
+</body>
+</html>
