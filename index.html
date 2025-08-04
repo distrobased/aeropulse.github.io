@@ -218,6 +218,108 @@
       right: 15px;
     }
   }
+
+  /* Additional sections styling */
+  #software-section ul.software-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 1rem;
+  }
+  #software-section ul.software-list li {
+    background: rgba(255 255 255 / 0.15);
+    border-radius: 14px;
+    box-shadow: 0 6px 24px #ff7eff88;
+    padding: 1rem 1rem 1rem 1rem;
+    display: flex;
+    align-items: center;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+  }
+  #software-section ul.software-list li:hover {
+    box-shadow: 0 14px 32px #ff9cffcc;
+    transform: translateY(-6px);
+  }
+  #software-section ul.software-list li img.software-logo {
+    width: 36px;
+    height: 36px;
+    margin-right: 14px;
+    filter: drop-shadow(0 0 3px #ff80ffbb);
+  }
+  #software-section ul.software-list li a.download-btn {
+    background: #ff5fffcc;
+    color: white;
+    padding: 0.4rem 1rem;
+    border-radius: 14px;
+    font-weight: 700;
+    box-shadow: 0 6px 20px #ff78f5cc;
+    margin-left: auto;
+    transition: background-color 0.35s ease;
+    text-decoration: none;
+  }
+  #software-section ul.software-list li a.download-btn:hover {
+    background: #e600d9;
+  }
+  #software-section h2.section-title {
+    margin-top: 4rem;
+  }
+
+  /* Contact Section */
+  #contact-section {
+    background: rgba(255 255 255 / 0.15);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 0 24px #ff7effaa;
+    color: #fff;
+    max-width: 600px;
+    margin: 0 auto 3rem auto;
+  }
+  #contact-section h2.section-title {
+    color: #ffb3ff;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  #contact-section form {
+    display: flex;
+    flex-direction: column;
+  }
+  #contact-section label {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #ffd1ffcc;
+  }
+  #contact-section input, #contact-section textarea {
+    background: rgba(255 255 255 / 0.1);
+    border: 2px solid #ff8aff;
+    border-radius: 12px;
+    color: white;
+    padding: 0.8rem 1rem;
+    margin-bottom: 1.2rem;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    resize: vertical;
+  }
+  #contact-section input:focus, #contact-section textarea:focus {
+    outline: none;
+    border-color: #ff39ff;
+  }
+  #contact-section button {
+    background: #ff5fffcc;
+    border: none;
+    color: white;
+    padding: 0.9rem 0;
+    border-radius: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 6px 20px #ff78f5cc;
+    transition: background-color 0.35s ease;
+  }
+  #contact-section button:hover {
+    background: #e600d9;
+  }
+
 </style>
 </head>
 <body>
@@ -252,6 +354,27 @@
   </ul>
 </section>
 
+<section id="software-section">
+  <h2 class="section-title">Popular Free Software</h2>
+  <ul class="software-list" id="software-list">
+    <!-- JS populates -->
+  </ul>
+</section>
+
+<section id="contact-section" aria-label="Contact Form">
+  <h2 class="section-title">Contact Us</h2>
+  <form id="contact-form" onsubmit="return submitForm(event)" novalidate>
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" required placeholder="Your full name" />
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" required placeholder="you@example.com" />
+    <label for="message">Message</label>
+    <textarea id="message" name="message" rows="5" required placeholder="Your message here..."></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+  <p id="form-feedback" style="text-align:center; margin-top:1rem;"></p>
+</section>
+
 </main>
 
 <footer>
@@ -259,27 +382,16 @@
   <p>All download links point to official or trusted archival sources only. No software hosted here.</p>
 </footer>
 
-<!-- Dancing Doge SVG -->
+<!-- Dancing Doge -->
 <div id="doge-container" aria-hidden="true">
-  <svg role="img" aria-label="Dancing Doge" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#ff8aff" stroke="#ff55ff" stroke-width="2">
-    <circle cx="256" cy="256" r="200" fill="#ffb3ff" />
-    <path d="M192 300c0 48 64 48 64 0v-20c0-24-16-24-16-48h-32c0 24-16 24-16 48v20z" fill="#ff69f9"/>
-    <circle cx="200" cy="220" r="28" fill="#fff"/>
-    <circle cx="312" cy="220" r="28" fill="#fff"/>
-    <circle cx="200" cy="220" r="16" fill="#000"/>
-    <circle cx="312" cy="220" r="16" fill="#000"/>
-    <path d="M240 310q16 16 32 0" stroke="#000" stroke-linecap="round"/>
-    <path d="M168 120c10-10 36-8 64 0 0 0-28 12-64 0z" fill="#ff80ff" />
-  </svg>
+  <img src="doge.png" alt="Dancing Doge meme" width="96" height="96" style="user-select:none;pointer-events:none;" />
 </div>
 
 <script>
-// Wait for full load
 window.addEventListener('load', () => {
   document.getElementById('loading').style.display = 'none';
 });
 
-// Data for OSes
 const osData = {
   modern: [
     {
@@ -310,169 +422,170 @@ const osData = {
       name: "Fedora 39",
       version: "Official ISO",
       url: "https://download.fedoraproject.org/pub/fedora/linux/releases/39/Workstation/x86_64/iso/Fedora-Workstation-Live-x86_64-39-1.6.iso",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/3/3f/Fedora_logo.svg"
+      logo: "https://getfedora.org/static/images/fedora-logo.svg"
     },
     {
-      name: "Linux Mint 21.1",
-      version: "Official ISO",
-      url: "https://mirrors.edge.kernel.org/linuxmint/stable/21.1/linuxmint-21.1-cinnamon-64bit.iso",
-      logo: "https://linuxmint.com/img/logo.svg"
-    },
-    {
-      name: "Arch Linux",
-      version: "Official ISO",
-      url: "https://archlinux.org/releng/releases/2023.07.01/archlinux-x86_64.iso",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/a/a5/Archlinux-icon-crystal-64.svg"
-    },
-    {
-      name: "ChromeOS Flex",
-      version: "Official Image",
-      url: "https://chromeenterprise.google/os/chromeosflex/",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/5/58/Google_Chrome_logo_2011.svg"
-    },
-    {
-      name: "Hackintosh OpenCore Guide",
-      version: "Installation Guide",
-      url: "https://dortania.github.io/OpenCore-Install-Guide/",
-      logo: "https://raw.githubusercontent.com/dortania/OpenCore-Install-Guide/master/images/logo.png"
+      name: "macOS Ventura",
+      version: "Official Installer",
+      url: "https://support.apple.com/en-us/HT213264",  // This link leads to official Apple download instructions
+      logo: "https://upload.wikimedia.org/wikipedia/commons/2/24/MacOS_logo.svg"
     }
   ],
   deprecated: [
     {
       name: "Windows 7",
-      version: "Official ISO",
+      version: "End of Support",
       url: "https://www.microsoft.com/en-us/software-download/windows7",
       logo: "https://upload.wikimedia.org/wikipedia/commons/5/5f/Windows_logo_-_2021.svg"
     },
     {
+      name: "Windows XP",
+      version: "Archived ISO",
+      url: "https://archive.org/details/WindowsXPProfessionalSP3x86-ENU",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/5/5f/Windows_logo_-_2021.svg"
+    },
+    {
       name: "Windows 8.1",
-      version: "Official ISO",
+      version: "Archived ISO",
       url: "https://www.microsoft.com/en-us/software-download/windows8ISO",
       logo: "https://upload.wikimedia.org/wikipedia/commons/5/5f/Windows_logo_-_2021.svg"
-    },
-    {
-      name: "Windows Vista",
-      version: "Archive ISO",
-      url: "https://archive.org/details/Windows_Vista_SP2",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/5/5f/Windows_logo_-_2021.svg"
-    },
-    {
-      name: "Windows XP",
-      version: "Archive ISO",
-      url: "https://archive.org/details/windowsxp-sp3-32bit",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/5/5f/Windows_logo_-_2021.svg"
-    },
-    {
-      name: "Ubuntu 16.04 LTS",
-      version: "Legacy ISO",
-      url: "https://old-releases.ubuntu.com/releases/16.04.7/ubuntu-16.04.7-desktop-amd64.iso",
-      logo: "https://assets.ubuntu.com/v1/29985a98-ubuntu-logo32.png"
     }
   ],
   meme: [
     {
-      name: "AmongOS",
-      version: "Archive ISO",
-      url: "https://archive.org/details/amongos",
-      logo: "https://upload.wikimedia.org/wikipedia/en/thumb/5/5a/Among_Us_Logo.svg/1200px-Among_Us_Logo.svg.png"
+      name: "DistroWatch Meme OS",
+      version: "Fun Forks & Jokes",
+      url: "https://distrowatch.com/dwres.php?resource=popularity",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/DistroWatch_logo.svg/1200px-DistroWatch_logo.svg.png"
     },
     {
-      name: "Justin Bieber Linux",
-      version: "Archive ISO",
-      url: "https://archive.org/details/jblinux",
-      logo: "https://upload.wikimedia.org/wikipedia/en/4/45/Justin_Bieber_Logo.svg"
+      name: "Puppy Linux",
+      version: "Lightweight Meme Favorite",
+      url: "https://puppylinux.com/download.html",
+      logo: "https://puppylinux.com/images/logo.png"
     },
     {
-      name: "DogeOS",
-      version: "Fun Distro",
-      url: "https://archive.org/details/dogeos",
-      logo: "https://upload.wikimedia.org/wikipedia/en/5/58/Doge_meme.svg"
+      name: "Linux Kodachi",
+      version: "Privacy Meme OS",
+      url: "https://www.digi77.com/linux-kodachi/",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/3/3b/Linux_Kodachi_Logo.png"
+    },
+    {
+      name: "Tails",
+      version: "Privacy-Focused Meme OS",
+      url: "https://tails.boum.org/install/index.en.html",
+      logo: "https://tails.boum.org/images/tails_logo.svg"
     }
   ]
 };
 
-// Cursor icons as base64 or URLs
-const cursorMap = {
-  Windows: 'url("https://cdn.iconscout.com/icon/free/png-256/microsoft-windows-2-569318.png") 16 16, auto',
-  Linux: 'url("https://upload.wikimedia.org/wikipedia/commons/a/af/Tux.png") 16 16, auto',
-  ChromeOS: 'url("https://upload.wikimedia.org/wikipedia/commons/5/58/Google_Chrome_logo_2011.svg") 16 16, auto',
-  Hackintosh: 'url("https://raw.githubusercontent.com/dortania/OpenCore-Install-Guide/master/images/logo.png") 16 16, auto',
-  Meme: 'url("https://upload.wikimedia.org/wikipedia/en/5/58/Doge_meme.svg") 16 16, auto',
-  default: 'auto'
-};
+const softwareData = [
+  {
+    name: "Google Chrome",
+    url: "https://www.google.com/chrome/",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/8/87/Google_Chrome_icon_%282011%29.png"
+  },
+  {
+    name: "Mozilla Firefox",
+    url: "https://www.mozilla.org/firefox/new/",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/a/a0/Firefox_logo%2C_2019.svg"
+  },
+  {
+    name: "VLC Media Player",
+    url: "https://www.videolan.org/vlc/index.html",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/3/3c/VLC_icon.svg"
+  },
+  {
+    name: "LibreOffice",
+    url: "https://www.libreoffice.org/download/download/",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/2/29/LibreOffice_Logo.svg"
+  },
+  {
+    name: "GIMP",
+    url: "https://www.gimp.org/downloads/",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/4/45/GIMP_icon.svg"
+  },
+  {
+    name: "7-Zip",
+    url: "https://www.7-zip.org/download.html",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/6/6e/7zip_logo.svg"
+  }
+];
 
-// Create OS list items with logos, names, and download links
-function createOSItem(os, cursorType) {
+// Insert OS data into lists
+function createOSItem(os) {
   const li = document.createElement('li');
   li.tabIndex = 0;
-  li.setAttribute('role', 'button');
-  li.setAttribute('aria-label', `Download ${os.name} - ${os.version}`);
-
-  // Logo image with fallback alt text
-  const img = document.createElement('img');
-  img.className = 'os-logo';
-  img.src = os.logo;
-  img.alt = `${os.name} logo`;
-  img.loading = "lazy";
-
-  // OS info container
-  const info = document.createElement('div');
-  info.className = 'os-info';
-
-  const strong = document.createElement('strong');
-  strong.textContent = os.name;
-  info.appendChild(strong);
-
-  const small = document.createElement('small');
-  small.textContent = os.version;
-  info.appendChild(small);
-
-  // Download link
-  const a = document.createElement('a');
-  a.href = os.url;
-  a.target = '_blank';
-  a.rel = 'noopener noreferrer';
-  a.className = 'download-btn';
-  a.textContent = 'Download';
-
-  li.appendChild(img);
-  li.appendChild(info);
-  li.appendChild(a);
-
-  // Cursor change on hover by OS type
+  li.setAttribute('role', 'listitem');
+  li.innerHTML = `
+    <img src="${os.logo}" alt="${os.name} logo" class="os-logo" loading="lazy" />
+    <div class="os-info">
+      <strong>${os.name}</strong>
+      <small>${os.version}</small>
+    </div>
+    <a href="${os.url}" target="_blank" rel="noopener noreferrer" class="download-btn" aria-label="Download ${os.name}">${os.version.includes('ISO') ? 'Download ISO' : 'Download'}</a>
+  `;
+  // Custom cursor on hover for different OS families
   li.addEventListener('mouseenter', () => {
-    document.body.style.cursor = cursorMap[cursorType] || cursorMap.default;
+    if (os.name.toLowerCase().includes('windows')) {
+      document.body.style.cursor = 'url(https://upload.wikimedia.org/wikipedia/commons/5/5f/Windows_logo_-_2021.svg) 16 16, auto';
+    } else if (os.name.toLowerCase().includes('mac')) {
+      document.body.style.cursor = 'url(https://upload.wikimedia.org/wikipedia/commons/2/24/MacOS_logo.svg) 16 16, auto';
+    } else if (os.name.toLowerCase().includes('ubuntu') || os.name.toLowerCase().includes('debian') || os.name.toLowerCase().includes('fedora') || os.name.toLowerCase().includes('linux')) {
+      document.body.style.cursor = 'url(https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg) 16 16, auto';
+    } else {
+      document.body.style.cursor = 'pointer';
+    }
   });
   li.addEventListener('mouseleave', () => {
-    document.body.style.cursor = cursorMap.default;
+    document.body.style.cursor = 'auto';
   });
-
   return li;
 }
 
-// Populate lists
-const modernList = document.getElementById('modern-os-list');
-const deprecatedList = document.getElementById('deprecated-os-list');
-const memeList = document.getElementById('meme-os-list');
+function createSoftwareItem(soft) {
+  const li = document.createElement('li');
+  li.tabIndex = 0;
+  li.setAttribute('role', 'listitem');
+  li.innerHTML = `
+    <img src="${soft.logo}" alt="${soft.name} logo" class="software-logo" loading="lazy" />
+    <strong>${soft.name}</strong>
+    <a href="${soft.url}" target="_blank" rel="noopener noreferrer" class="download-btn" aria-label="Download ${soft.name}">Download</a>
+  `;
+  return li;
+}
 
-osData.modern.forEach(os => {
-  modernList.appendChild(createOSItem(os, determineCursor(os.name)));
-});
-osData.deprecated.forEach(os => {
-  deprecatedList.appendChild(createOSItem(os, determineCursor(os.name)));
-});
-osData.meme.forEach(os => {
-  memeList.appendChild(createOSItem(os, "Meme"));
-});
+function populateLists() {
+  const modernList = document.getElementById('modern-os-list');
+  osData.modern.forEach(os => {
+    modernList.appendChild(createOSItem(os));
+  });
 
-// Determine cursor based on OS name keywords
-function determineCursor(name) {
-  const lower = name.toLowerCase();
-  if (lower.includes('windows')) return 'Windows';
-  if (lower.includes('ubuntu') || lower.includes('debian') || lower.includes('fedora') || lower.includes('mint') || lower.includes('arch') || lower.includes('linux')) return 'Linux';
-  if (lower.includes('chromeos') || lower.includes('chrome')) return 'ChromeOS';
-  if (lower.includes('hackintosh') || lower.includes('opencore')) return 'Hackintosh';
-  return 'default';
+  const deprecatedList = document.getElementById('deprecated-os-list');
+  osData.deprecated.forEach(os => {
+    deprecatedList.appendChild(createOSItem(os));
+  });
+
+  const memeList = document.getElementById('meme-os-list');
+  osData.meme.forEach(os => {
+    memeList.appendChild(createOSItem(os));
+  });
+
+  const softwareList = document.getElementById('software-list');
+  softwareData.forEach(soft => {
+    softwareList.appendChild(createSoftwareItem(soft));
+  });
+}
+populateLists();
+
+// Contact form submission dummy handler
+function submitForm(e) {
+  e.preventDefault();
+  const feedback = document.getElementById('form-feedback');
+  feedback.style.color = '#ffb3ff';
+  feedback.textContent = 'Thank you for your message! We will get back to you soon.';
+  e.target.reset();
+  return false;
 }
 </script>
 
