@@ -3,591 +3,621 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>OS Hub — Real Downloads & Fun</title>
+<title>OS Hub — Official & Archive Downloads</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+<!-- Google AdSense (placeholder, replace YOUR_ID with your publisher ID) -->
+<!--
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=YOUR_ID"
+     crossorigin="anonymous"></script>
+-->
+
 <style>
-  /* Reset & base */
+  /* === GLOBAL STYLES === */
   * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
   }
   body {
-    margin: 0; font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #7f00ff, #e100ff);
-    color: #222;
-    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ffe6f2, #ffd9ec);
+    color: #333;
     overflow-x: hidden;
-    cursor: auto;
+    scroll-behavior: smooth;
+    cursor: url('cursors/default.cur'), auto;
   }
-  a {
-    text-decoration: none; color: #ffd1ff;
-    transition: color 0.3s ease;
-  }
-  a:hover, a:focus {
-    color: #ffffff;
-  }
-  h1,h2,h3 {
-    margin: 0 0 0.75rem 0;
-    font-weight: 600;
-    color: #ff9cff;
-    text-shadow: 0 0 5px #ff9cffaa;
-  }
+
   header {
-    background: rgba(255 255 255 / 0.1);
-    backdrop-filter: saturate(180%) blur(20px);
-    box-shadow: 0 3px 10px #e100ffaa;
-    padding: 2rem 1rem;
     text-align: center;
+    padding: 3rem 1rem;
+    background: rgba(255, 204, 229, 0.9);
+    color: #b30c5a;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     position: sticky;
     top: 0;
-    z-index: 999;
+    z-index: 1000;
+    animation: slideDown 1s ease-out;
   }
+
   header h1 {
-    font-size: 3rem;
-    letter-spacing: 2px;
+    font-size: 2.8rem;
+    margin-bottom: 0.5rem;
   }
   header p {
-    font-weight: 400;
-    font-size: 1.3rem;
-    color: #ffd1ffcc;
-    letter-spacing: 0.5px;
-  }
-  main {
-    max-width: 1024px;
-    margin: 2rem auto 5rem auto;
-    background: rgba(255 255 255 / 0.1);
-    border-radius: 20px;
-    box-shadow: 0 0 40px #e100ff66;
-    padding: 2.5rem 3rem;
-    color: #fff;
-    animation: fadeInSlide 1.2s ease forwards;
-  }
-  section {
-    margin-bottom: 3.5rem;
-  }
-  h2.section-title {
-    border-bottom: 3px solid #ff9cff88;
-    padding-bottom: 0.75rem;
-    margin-bottom: 2rem;
-    font-size: 2.4rem;
-  }
-  ul.os-list {
-    list-style: none;
-    margin: 0; padding: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(280px,1fr));
-    gap: 1.4rem;
-  }
-  ul.os-list li {
-    display: flex;
-    align-items: center;
-    background: rgba(255 255 255 / 0.15);
-    border-radius: 16px;
-    padding: 1.2rem 1.2rem 1.2rem 1.2rem;
-    box-shadow: 0 6px 24px #ff7eff88;
-    cursor: pointer;
-    transition: transform 0.35s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 0.35s ease;
-    user-select: none;
-  }
-  ul.os-list li:hover {
-    transform: translateY(-8px) scale(1.03);
-    box-shadow: 0 14px 32px #ff9cffcc;
-  }
-  ul.os-list li img.os-logo {
-    width: 44px;
-    height: 44px;
-    margin-right: 18px;
-    border-radius: 8px;
-    filter: drop-shadow(0 0 2px #ff69f9aa);
-  }
-  ul.os-list li .os-info {
-    flex-grow: 1;
-  }
-  ul.os-list li .os-info strong {
-    display: block;
-    font-size: 1.3rem;
-    margin-bottom: 0.35rem;
-    text-shadow: 0 0 3px #ff80ffbb;
-  }
-  ul.os-list li .os-info small {
-    color: #ffb3ffbb;
-    font-size: 0.9rem;
-    letter-spacing: 0.04em;
-  }
-  ul.os-list li a.download-btn {
-    background: #ff5fffcc;
-    color: white;
-    padding: 0.6rem 1.3rem;
-    border-radius: 14px;
-    font-weight: 700;
-    box-shadow: 0 6px 20px #ff78f5cc;
-    transition: background-color 0.35s ease;
-  }
-  ul.os-list li a.download-btn:hover {
-    background: #e600d9;
-  }
-  footer {
-    text-align: center;
-    font-size: 1rem;
-    color: #ffb3ffbb;
-    padding: 1.5rem 1rem 3rem 1rem;
-    user-select: none;
-    letter-spacing: 0.02em;
-  }
-  footer a {
-    color: #ffb3ffcc;
-  }
-  footer a:hover {
-    color: #ffffff;
-  }
-  label {
-    display: block;
-    font-weight: 600;
-    margin-bottom: 0.75rem;
-    color: #ffabffcc;
-  }
-  select {
-    padding: 0.8rem 1.2rem;
-    font-size: 1.1rem;
-    border-radius: 16px;
-    border: 2px solid #ff8aff;
-    background: rgba(255 255 255 / 0.15);
-    outline: none;
-    cursor: pointer;
-    transition: border-color 0.3s ease, background-color 0.3s ease;
-    width: 100%;
-    max-width: 340px;
-    color: white;
-    text-shadow: 0 0 4px #ff80ffa0;
-  }
-  select:hover, select:focus {
-    border-color: #ff39ff;
-    background: rgba(255 255 255 / 0.35);
-  }
-  /* Animations */
-  @keyframes fadeInSlide {
-    0% { opacity: 0; transform: translateY(40px); }
-    100% { opacity: 1; transform: translateY(0); }
-  }
-  /* Loading spinner */
-  #loading {
-    position: fixed;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 70px; height: 70px;
-    border: 8px solid rgba(255, 255, 255, 0.3);
-    border-top: 8px solid #ff6aff;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    z-index: 9999;
-  }
-  @keyframes spin {
-    0% { transform: translate(-50%, -50%) rotate(0deg);}
-    100% { transform: translate(-50%, -50%) rotate(360deg);}
-  }
-  /* Doge 360 dancing */
-  #doge-container {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 96px;
-    height: 96px;
-    pointer-events: none;
-    user-select: none;
-    animation: doge-spin 10s linear infinite;
-    filter: drop-shadow(0 0 10px #ff69f9);
-    z-index: 998;
-  }
-  @keyframes doge-spin {
-    0% { transform: rotate(0deg) scale(1); }
-    50% { transform: rotate(180deg) scale(1.05); }
-    100% { transform: rotate(360deg) scale(1); }
-  }
-  /* Responsive */
-  @media (max-width: 720px) {
-    main {
-      margin: 1rem 1rem 4rem 1rem;
-      padding: 1.8rem 2rem;
-    }
-    ul.os-list {
-      grid-template-columns: 1fr;
-    }
-    #doge-container {
-      width: 72px;
-      height: 72px;
-      bottom: 15px;
-      right: 15px;
-    }
+    font-size: 1.2rem;
+    color: #93134a;
   }
 
-  /* Additional sections styling */
-  #software-section ul.software-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  nav {
+    max-width: 1200px;
+    margin: 1rem auto;
+    display: flex;
+    justify-content: center;
     gap: 1rem;
   }
-  #software-section ul.software-list li {
-    background: rgba(255 255 255 / 0.15);
-    border-radius: 14px;
-    box-shadow: 0 6px 24px #ff7eff88;
-    padding: 1rem 1rem 1rem 1rem;
-    display: flex;
-    align-items: center;
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
-    cursor: pointer;
-  }
-  #software-section ul.software-list li:hover {
-    box-shadow: 0 14px 32px #ff9cffcc;
-    transform: translateY(-6px);
-  }
-  #software-section ul.software-list li img.software-logo {
-    width: 36px;
-    height: 36px;
-    margin-right: 14px;
-    filter: drop-shadow(0 0 3px #ff80ffbb);
-  }
-  #software-section ul.software-list li a.download-btn {
-    background: #ff5fffcc;
+  nav button {
+    background: #ff4da6;
+    border: none;
     color: white;
-    padding: 0.4rem 1rem;
-    border-radius: 14px;
-    font-weight: 700;
-    box-shadow: 0 6px 20px #ff78f5cc;
-    margin-left: auto;
-    transition: background-color 0.35s ease;
-    text-decoration: none;
+    padding: 0.8rem 1.5rem;
+    font-weight: 600;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.3s;
   }
-  #software-section ul.software-list li a.download-btn:hover {
-    background: #e600d9;
-  }
-  #software-section h2.section-title {
-    margin-top: 4rem;
+  nav button:hover,
+  nav button.active {
+    background: #cc3b82;
   }
 
-  /* Contact Section */
-  #contact-section {
-    background: rgba(255 255 255 / 0.15);
-    border-radius: 20px;
+  main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+
+  section {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 18px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(10px);
     padding: 2rem;
-    box-shadow: 0 0 24px #ff7effaa;
-    color: #fff;
-    max-width: 600px;
-    margin: 0 auto 3rem auto;
+    margin-bottom: 3rem;
+    animation: fadeUp 1s ease forwards;
   }
-  #contact-section h2.section-title {
-    color: #ffb3ff;
+
+  section h2 {
     text-align: center;
+    font-size: 2rem;
     margin-bottom: 1.5rem;
+    color: #b30c5a;
   }
-  #contact-section form {
+
+  ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+
+  li {
+    background: #fff0f8;
+    padding: 1rem;
+    border-radius: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeUp 0.8s ease forwards;
+  }
+  li:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+  }
+
+  .os-info {
     display: flex;
     flex-direction: column;
   }
-  #contact-section label {
-    margin-bottom: 0.5rem;
+  .os-name {
     font-weight: 600;
-    color: #ffd1ffcc;
+    font-size: 1.05rem;
   }
-  #contact-section input, #contact-section textarea {
-    background: rgba(255 255 255 / 0.1);
-    border: 2px solid #ff8aff;
-    border-radius: 12px;
-    color: white;
-    padding: 0.8rem 1rem;
-    margin-bottom: 1.2rem;
-    font-size: 1rem;
-    font-family: 'Poppins', sans-serif;
-    resize: vertical;
-  }
-  #contact-section input:focus, #contact-section textarea:focus {
-    outline: none;
-    border-color: #ff39ff;
-  }
-  #contact-section button {
-    background: #ff5fffcc;
-    border: none;
-    color: white;
-    padding: 0.9rem 0;
-    border-radius: 16px;
-    font-weight: 700;
-    cursor: pointer;
-    box-shadow: 0 6px 20px #ff78f5cc;
-    transition: background-color 0.35s ease;
-  }
-  #contact-section button:hover {
-    background: #e600d9;
+  .os-version {
+    font-size: 0.85rem;
+    color: #93134a;
   }
 
+  .download-btn {
+    background: #ff4da6;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s ease;
+  }
+  .download-btn:hover {
+    background: #cc3b82;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: rgba(255, 204, 229, 0.85);
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: #93134a;
+    backdrop-filter: blur(8px);
+  }
+  footer a {
+    color: #b30c5a;
+    margin: 0 0.5rem;
+    text-decoration: none;
+  }
+  footer a:hover {
+    text-decoration: underline;
+  }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Loading Screen */
+  #loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ffd9ec;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  .loader {
+    border: 8px solid #fff0f8;
+    border-top: 8px solid #ff4da6;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+  }
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    nav {
+      flex-wrap: wrap;
+    }
+    section {
+      padding: 1.5rem;
+    }
+  }
 </style>
 </head>
 <body>
+  <div id="loading"><div class="loader"></div></div>
 
-<div id="loading" aria-label="Loading"></div>
+  <header>
+    <h1>OS Hub</h1>
+    <p>All Official, Archive & Fun OS Downloads in One Place</p>
+  </header>
 
-<header>
-  <h1>OS Hub</h1>
-  <p>Your trusted source for official OS downloads & fun distros</p>
-</header>
+  <nav id="nav-buttons">
+    <button data-target="windows" class="active">Windows</button>
+    <button data-target="linux">Linux</button>
+    <button data-target="bsd">BSD</button>
+    <button data-target="chromeos">ChromeOS</button>
+    <button data-target="retro">Retro / Classic</button>
+    <button data-target="hackintosh">Hackintosh</button>
+    <button data-target="meme">Meme Distros</button>
+  </nav>
 
-<main>
+  <main>
+    <!-- WINDOWS -->
+    <section id="windows" class="os-section">
+      <h2>Microsoft Windows</h2>
+      <ul>
+        <li>
+          <div class="os-info">
+            <span class="os-name">Windows 11</span>
+            <span class="os-version">Pro 22H2 (x64)</span>
+          </div>
+          <a class="download-btn" href="https://www.microsoft.com/software-download/windows11" target="_blank" rel="noopener noreferrer">Download</a>
+        </li>
+        <li>
+          <div class="os-info">
+            <span class="os-name">Windows 10</span>
+            <span class="os-version">21H2 (x64/x86)</span>
+          </div>
+          <a class="download-btn" href="https://www.microsoft.com/software-download/windows10" target="_blank" rel="noopener noreferrer">Download</a>
+        </li>
+        <li>
+          <div class="os-info">
+            <span class="os-name">Windows 8.1</span>
+            <span class="os-version">Final ISO</span>
+          </div>
+          <a class="download-btn" href="https://archive.org/details/windows-8.1-iso" target="_blank" rel="noopener noreferrer">Download</a>
+        </li>
+        <li>
+          <div class="os-info">
+            <span class="os-name">Windows 7 Ultimate</span>
+            <span class="os-version">SP1 x64</span>
+          </div>
+          <a class="download-btn" href="https://archive.org/details/windows-7-ultimate-sp1-x64" target="_blank" rel="noopener noreferrer">Download</a>
+        </li>
+        <li>
+          <div class="os-info">
+            <span class="os-name">Windows Vista</span>
+            <span class="os-version">SP2 x64</span>
+          </div>
+          <a class="download-btn" href="https://archive.org/details/windows-vista-ultimate-sp2-x64" target="_blank" rel="noopener noreferrer">Download</a>
+        </li>
+        <li>
+          <div class="os-info">
+            <span class="os-name">Windows XP Professional</span>
+            <span class="os-version">SP3 x86</span>
+          </div>
+          <a class="download-btn" href="https://archive.org/details/windows-xp-pro-sp3" target="_blank" rel="noopener noreferrer">Download</a>
+        </li>
+        <li>
+          <div class="os-info">
+            <span class="os-name">Windows 2000</span>
+            <span class="os-version">Professional ISO</span>
+          </div>
+          <a class="download-btn" href="https://archive.org/details/windows-2000-pro-iso" target="_blank" rel="noopener noreferrer">Download</a>
+        </li>
+        <li>
+          <div class="os-info">
+            <span class="os-name">Windows 98 SE</span>
+            <span class="os-version">Second Edition ISO</span>
+          </div>
+          <a class="download-btn" href="https://archive.org/details/windows-98-se-iso" target="_blank" rel="noopener noreferrer">Download</a>
+        </li>
+        <li>
+          <div class="os-info">
+            <span class="os-name">Windows 95</span>
+            <span class="os-version">OSR2 ISO</span>
+          </div>
+          <a class="download-btn" href="https://archive.org/details/windows-95-osr2-iso" target="_blank" rel="noopener noreferrer">Download</a>
+        </li>
+        <li>
+          <div class="os-info">
+            <span class="os-name">Windows 3.1</span>
+            <span class="os-version">Floppy Disk Images</span>
+          </div>
+          <a class="download-btn" href="https://archive.org/details/windows-3.1-disks" target="_blank" rel="noopener noreferrer">Download</a>
+        </li>
+      </ul>
+    </section>
 
-<section id="modern-os">
-  <h2 class="section-title">Modern Operating Systems</h2>
-  <ul class="os-list" id="modern-os-list" aria-live="polite" aria-relevant="additions">
-    <!-- JS populates -->
-  </ul>
-</section>
+    <!-- LINUX -->
+    <section id="linux" class="os-section" style="display:none;">
+      <h2>Linux Distributions</h2>
+      <ul>
+        <li>
+          <div class="os-info">
+            <span class="os-name">Ubuntu</span>
+            <span class="os-version">22.04 LTS Desktop (x64)</span>
+          </div>
+          <a class="download-btn" href="https://releases.ubuntu.com/22.04/ubuntu-22.04.1-desktop-amd64.iso" target="_blank" rel="noopener noreferrer">Download</a>
+        </li>
+        <li>
+          <div class="os-info">
+            <span class="os-name">Debian</span>
+            <span class="os-version">12.5.0 NetInstall (x64)</span>
+          </div>
+          <a class="download-btn" href="https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-12.5.0-amd64-netinst.iso" target="_blank" rel="noopener noreferrer">Download</a>
+        </li>
+        <li>
+          <div class="os-info">
+            <span class="os-name">Fedora</span>
+            <span class="os-version">39 Workstation (x64)</span>
+          </div>
+          <a class="download-btn" href="https://download.fedoraproject.org/pub/fedora/linux/releases/39/Workstation/x86_64/iso/Fedora-Workstation-Live-x86_64-39-1.6.iso" target="_blank" rel="noopener noreferrer">Download</a>
+        </li>
+        <li>
+          <div class="os-info">
+            <span class="os-name">Linux Mint</span>
+            <span class="os-version">21.1 Cinnamon (x64)</span>
+          </div>
+          <a class="download-btn" href="https://mirrors.edge.kernel.org/linuxmint/stable/21.1/linuxmint-21.1-cinnamon-64bit.iso" target="_blank" rel="noopener noreferrer">Download</a>
+        </li>
+        <li>
+          <div class="os-info">
+            <span class="os-name">Manjaro</span>
+            <span class="os-version">Stable XFCE (x64)</span>
+          </div>
+          <a class="download-btn" href="https://download.manjaro.org/xfce/21.3.7/manjaro-xfce-21.3.7-230418-linux515.iso" target="_blank" rel="noopener noreferrer">Download</a>
+        </li>
+        <li>
+          <div class="os-info">
+            <span class="os-name">Arch Linux</span>
+            <span class="os-version">Latest ISO (x64)</span>
+          </div>
+          <a class="download-btn" href="https://archlinux.org/releng/releases/2023.05.01/archlinux-x86_64.iso" target="_blank" rel="noopener noreferrer">Download</a>
+        </li>
+        <li>
+          <div class="os-info">
+            <span class="os-name">Pop!_OS</span>
+            <span class="os-version">22.04 LTS (x64)</span>
+          </div>
+          <a class="download-btn" href="https://pop-iso.sfo2.cdn.digitaloceanspaces.com/22.04/pop-os_22.04_amd64_intel_22.iso" target="_blank" rel="noopener noreferrer">Download</a>
+        </li>
+        <li>
+          <div class="os-info">
+            <span class="os-name">Elementary OS</span>
+            <span class="os-version">7.1 Hera (x64)</span>
+          </div>
+          <a class="download-btn" href="https://elementary.io/download" target="_blank" rel="noopener noreferrer">Download</a>
+        </li>
+        <li>
+          <div class="os-info">
+            <span class="os-name">Kali Linux</span>
+            <span class="os-version">2023.3 (x64)</span>
+          </div>
+          <a class="download-btn" href="https://www.kali.org/get-kali/" target="_blank" rel="noopener noreferrer">Download</a>
+        </li>
+        <li>
+          <div class="os-info">
+            <span class="os-name">Zorin OS</span>
+            <span class="os-version">16 Core (x64)</span>
+          </div>
+          <a class="download-btn" href="https://zorinos.com/download/" target="_blank" rel="noopener noreferrer">Download</a>
+        </li>
+      </ul>
+    </section>
 
-<section id="deprecated-os">
-  <h2 class="section-title">Deprecated Operating Systems</h2>
-  <ul class="os-list" id="deprecated-os-list" aria-live="polite" aria-relevant="additions">
-    <!-- JS populates -->
-  </ul>
-</section>
+    <!-- BSD -->
+    <section id="bsd" class="os-section" style="display:none;">
+      <h2>BSD Variants</h2>
+      <ul>
+        <li>
+          <div class="os-info">
+            <span class="os-name">FreeBSD</span>
+            <span class="os-version">13.2-RELEASE (x64)</span>
+          </div>
+          <a class="download-btn" href="https://download.freebsd.org/ftp/releases/ISO-IMAGES/13.2/FreeBSD-13.2-RELEASE-amd64-disc1.iso" target="_blank" rel="noopener noreferrer">Download</a>
+        </li>
+        <li>
+          <div class="os-info">
+            <span class="os-name">OpenBSD</span>
+            <span class="os-version">7.3 (x64)</span>
+          </div>
+          <a class="download-btn" href="https://cdn.openbsd.org/pub/OpenBSD/7.3/amd64/install73.iso" target="_blank" rel="noopener noreferrer">Download</a>
+        </li>
+        <li>
+          <div class="os-info">
+            <span class="os-name">NetBSD</span>
+            <span class="os-version">10.2 (x64)</span>
+          </div>
+          <a class="download-btn" href="https://cdn.netbsd.org/pub/NetBSD/NetBSD-10.2/amd64/installation/cdrom/cd.iso" target="_blank" rel="noopener noreferrer">Download</a>
+        </li>
+        <li>
+          <div class="os-info">
+            <span class="os-name">DragonFly BSD</span>
+            <span class="os-version">6.4.0 (x64)</span>
+          </div>
+          <a class="download-btn" href="https://downloads.dragonflybsd.org/ISO/dfly-x86_64-6.4.0_REL.iso" target="_blank" rel="noopener noreferrer">Download</a>
+        </li>
+      </ul>
+    </section>
 
-<section id="meme-os">
-  <h2 class="section-title">Meme Distros & Fun OSes</h2>
-  <ul class="os-list" id="meme-os-list" aria-live="polite" aria-relevant="additions">
-    <!-- JS populates -->
-  </ul>
-</section>
+    <!-- CHROMEOS -->
+    <section id="chromeos" class="os-section" style="display:none;">
+      <h2>ChromeOS & Variants</h2>
+      <ul>
+        <li>
+          <div class="os-info">
+            <span class="os-name">ChromeOS Flex</span>
+            <span class="os-version">Latest Official Build</span>
+          </div>
+          <a class="download-btn" href="https://chromeenterprise.google/os/chromeosflex/" target="_blank" rel="noopener noreferrer">Official Site</a>
+        </li>
+        <li>
+          <div class="os-info">
+            <span class="os-name">CloudReady</span>
+            <span class="os-version">by Neverware</span>
+          </div>
+          <a class="download-btn" href="https://www.neverware.com/freedownload" target="_blank" rel="noopener noreferrer">Download</a>
+        </li>
+        <li>
+          <div class="os-info">
+            <span class="os-name">FydeOS</span>
+            <span class="os-version">Cloud OS for China</span>
+          </div>
+          <a class="download-btn" href="https://fydeos.io/download/" target="_blank" rel="noopener noreferrer">Download</a>
+        </li>
+      </ul>
+    </section>
 
-<section id="software-section">
-  <h2 class="section-title">Popular Free Software</h2>
-  <ul class="software-list" id="software-list">
-    <!-- JS populates -->
-  </ul>
-</section>
+    <!-- RETRO / CLASSIC -->
+    <section id="retro" class="os-section" style="display:none;">
+      <h2>Retro & Classic OS</h2>
+      <ul>
+        <li>
+          <div class="os-info">
+            <span class="os-name">MS-DOS 6.22</span>
+            <span class="os-version">Full Disk Images</span>
+          </div>
+          <a class="download-btn" href="https://archive.org/details/msdos622" target="_blank" rel="noopener noreferrer">Download</a>
+        </li>
+        <li>
+          <div class="os-info">
+            <span class="os-name">AmigaOS 3.1</span>
+            <span class="os-version">Disk Images</span>
+          </div>
+          <a class="download-btn" href="https://archive.org/details/amigaos31" target="_blank" rel="noopener noreferrer">Download</a>
+        </li>
+        <li>
+          <div class="os-info">
+            <span class="os-name">Commodore 64 BASIC Kernel</span>
+            <span class="os-version">ROM Images</span>
+          </div>
+          <a class="download-btn" href="https://archive.org/details/Commodore_64_Basic_Kernal" target="_blank" rel="noopener noreferrer">Download</a>
+        </li>
+        <li>
+          <div class="os-info">
+            <span class="os-name">Mac OS 9.2.2</span>
+            <span class="os-version">Classic Mac OS</span>
+          </div>
+          <a class="download-btn" href="https://archive.org/details/mac_os_9.2.2" target="_blank" rel="noopener noreferrer">Download</a>
+        </li>
+      </ul>
+    </section>
 
-<section id="contact-section" aria-label="Contact Form">
-  <h2 class="section-title">Contact Us</h2>
-  <form id="contact-form" onsubmit="return submitForm(event)" novalidate>
-    <label for="name">Name</label>
-    <input type="text" id="name" name="name" required placeholder="Your full name" />
-    <label for="email">Email</label>
-    <input type="email" id="email" name="email" required placeholder="you@example.com" />
-    <label for="message">Message</label>
-    <textarea id="message" name="message" rows="5" required placeholder="Your message here..."></textarea>
-    <button type="submit">Send Message</button>
-  </form>
-  <p id="form-feedback" style="text-align:center; margin-top:1rem;"></p>
-</section>
+    <!-- HACKINTOSH -->
+    <section id="hackintosh" class="os-section" style="display:none;">
+      <h2>Hackintosh & macOS</h2>
+      <ul>
+        <li>
+          <div class="os-info">
+            <span class="os-name">macOS Monterey</span>
+            <span class="os-version">Official Installer (12.6.3)</span>
+          </div>
+          <a class="download-btn" href="https://support.apple.com/en-us/HT211683" target="_blank" rel="noopener noreferrer">Apple Support</a>
+        </li>
+        <li>
+          <div class="os-info">
+            <span class="os-name">OpenCore Bootloader</span>
+            <span class="os-version">Latest Release</span>
+          </div>
+          <a class="download-btn" href="https://dortania.github.io/OpenCore-Install-Guide/" target="_blank" rel="noopener noreferrer">Guide & Downloads</a>
+        </li>
+        <li>
+          <div class="os-info">
+            <span class="os-name">macOS Ventura</span>
+            <span class="os-version">Official Installer (13.x)</span>
+          </div>
+          <a class="download-btn" href="https://support.apple.com/en-us/HT213400" target="_blank" rel="noopener noreferrer">Apple Support</a>
+        </li>
+      </ul>
+    </section>
 
-</main>
+    <!-- MEME DISTROS -->
+    <section id="meme" class="os-section" style="display:none;">
+      <h2>Meme & Fun Distros</h2>
+      <ul>
+        <li>
+          <div class="os-info">
+            <span class="os-name">AmongOS</span>
+            <span class="os-version">Meme Distro ISO</span>
+          </div>
+          <a class="download-btn" href="https://archive.org/details/amongos" target="_blank" rel="noopener noreferrer">Download</a>
+        </li>
+        <li>
+          <div class="os-info">
+            <span class="os-name">Justin Bieber Linux</span>
+            <span class="os-version">April Fools Meme</span>
+          </div>
+          <a class="download-btn" href="https://archive.org/details/jblinux" target="_blank" rel="noopener noreferrer">Download</a>
+        </li>
+      </ul>
+    </section>
+  </main>
 
-<footer>
-  <p>© 2025 OS Hub — <a href="mailto:contact@oshub.example" target="_blank" rel="noopener">Contact</a> | <a href="#" onclick="alert('DMCA info coming soon')" role="button" tabindex="0">DMCA</a> | <a href="#" onclick="alert('Credits to official OS vendors and communities')" role="button" tabindex="0">Credits</a></p>
-  <p>All download links point to official or trusted archival sources only. No software hosted here.</p>
-</footer>
+  <footer>
+    <p>© 2025 OS Hub | Contact: <a href="mailto:ethanbudds2012@gmail.com">ethanbudds2012@gmail.com</a></p>
+    <p><a href="#dmca">DMCA</a> | <a href="#credits">Credits</a></p>
+  </footer>
 
-<!-- Dancing Doge -->
-<div id="doge-container" aria-hidden="true">
-  <img src="doge.png" alt="Dancing Doge meme" width="96" height="96" style="user-select:none;pointer-events:none;" />
-</div>
+  <!-- DMCA & Credits sections hidden but link targets -->
+  <div id="dmca" style="padding:2rem; max-width:700px; margin: 2rem auto; background:#fff0f8; border-radius:14px; display:none;">
+    <h3>DMCA Notice</h3>
+    <p>This site only links to official and archive.org hosted files. We respect copyright and remove links on request.</p>
+  </div>
+  <div id="credits" style="padding:2rem; max-width:700px; margin: 2rem auto; background:#fff0f8; border-radius:14px; display:none;">
+    <h3>Credits</h3>
+    <p>Thanks to Microsoft, Linux Distros teams, Apple, Archive.org, and the open source community for hosting these files.</p>
+  </div>
 
 <script>
-window.addEventListener('load', () => {
-  document.getElementById('loading').style.display = 'none';
-});
-
-const osData = {
-  modern: [
-    {
-      name: "Windows 10",
-      version: "Official ISO",
-      url: "https://www.microsoft.com/software-download/windows10ISO",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/5/5f/Windows_logo_-_2021.svg"
-    },
-    {
-      name: "Windows 11",
-      version: "Official ISO",
-      url: "https://www.microsoft.com/software-download/windows11",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/5/5f/Windows_logo_-_2021.svg"
-    },
-    {
-      name: "Ubuntu 22.04 LTS",
-      version: "Official ISO",
-      url: "https://releases.ubuntu.com/22.04/ubuntu-22.04.1-live-server-amd64.iso",
-      logo: "https://assets.ubuntu.com/v1/29985a98-ubuntu-logo32.png"
-    },
-    {
-      name: "Debian 12",
-      version: "Official ISO",
-      url: "https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-12.5.0-amd64-netinst.iso",
-      logo: "https://www.debian.org/logos/openlogo-nd-100.png"
-    },
-    {
-      name: "Fedora 39",
-      version: "Official ISO",
-      url: "https://download.fedoraproject.org/pub/fedora/linux/releases/39/Workstation/x86_64/iso/Fedora-Workstation-Live-x86_64-39-1.6.iso",
-      logo: "https://getfedora.org/static/images/fedora-logo.svg"
-    },
-    {
-      name: "macOS Ventura",
-      version: "Official Installer",
-      url: "https://support.apple.com/en-us/HT213264",  // This link leads to official Apple download instructions
-      logo: "https://upload.wikimedia.org/wikipedia/commons/2/24/MacOS_logo.svg"
-    }
-  ],
-  deprecated: [
-    {
-      name: "Windows 7",
-      version: "End of Support",
-      url: "https://www.microsoft.com/en-us/software-download/windows7",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/5/5f/Windows_logo_-_2021.svg"
-    },
-    {
-      name: "Windows XP",
-      version: "Archived ISO",
-      url: "https://archive.org/details/WindowsXPProfessionalSP3x86-ENU",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/5/5f/Windows_logo_-_2021.svg"
-    },
-    {
-      name: "Windows 8.1",
-      version: "Archived ISO",
-      url: "https://www.microsoft.com/en-us/software-download/windows8ISO",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/5/5f/Windows_logo_-_2021.svg"
-    }
-  ],
-  meme: [
-    {
-      name: "DistroWatch Meme OS",
-      version: "Fun Forks & Jokes",
-      url: "https://distrowatch.com/dwres.php?resource=popularity",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/DistroWatch_logo.svg/1200px-DistroWatch_logo.svg.png"
-    },
-    {
-      name: "Puppy Linux",
-      version: "Lightweight Meme Favorite",
-      url: "https://puppylinux.com/download.html",
-      logo: "https://puppylinux.com/images/logo.png"
-    },
-    {
-      name: "Linux Kodachi",
-      version: "Privacy Meme OS",
-      url: "https://www.digi77.com/linux-kodachi/",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/3/3b/Linux_Kodachi_Logo.png"
-    },
-    {
-      name: "Tails",
-      version: "Privacy-Focused Meme OS",
-      url: "https://tails.boum.org/install/index.en.html",
-      logo: "https://tails.boum.org/images/tails_logo.svg"
-    }
-  ]
-};
-
-const softwareData = [
-  {
-    name: "Google Chrome",
-    url: "https://www.google.com/chrome/",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/8/87/Google_Chrome_icon_%282011%29.png"
-  },
-  {
-    name: "Mozilla Firefox",
-    url: "https://www.mozilla.org/firefox/new/",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/a/a0/Firefox_logo%2C_2019.svg"
-  },
-  {
-    name: "VLC Media Player",
-    url: "https://www.videolan.org/vlc/index.html",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/3/3c/VLC_icon.svg"
-  },
-  {
-    name: "LibreOffice",
-    url: "https://www.libreoffice.org/download/download/",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/2/29/LibreOffice_Logo.svg"
-  },
-  {
-    name: "GIMP",
-    url: "https://www.gimp.org/downloads/",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/4/45/GIMP_icon.svg"
-  },
-  {
-    name: "7-Zip",
-    url: "https://www.7-zip.org/download.html",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/6/6e/7zip_logo.svg"
-  }
-];
-
-// Insert OS data into lists
-function createOSItem(os) {
-  const li = document.createElement('li');
-  li.tabIndex = 0;
-  li.setAttribute('role', 'listitem');
-  li.innerHTML = `
-    <img src="${os.logo}" alt="${os.name} logo" class="os-logo" loading="lazy" />
-    <div class="os-info">
-      <strong>${os.name}</strong>
-      <small>${os.version}</small>
-    </div>
-    <a href="${os.url}" target="_blank" rel="noopener noreferrer" class="download-btn" aria-label="Download ${os.name}">${os.version.includes('ISO') ? 'Download ISO' : 'Download'}</a>
-  `;
-  // Custom cursor on hover for different OS families
-  li.addEventListener('mouseenter', () => {
-    if (os.name.toLowerCase().includes('windows')) {
-      document.body.style.cursor = 'url(https://upload.wikimedia.org/wikipedia/commons/5/5f/Windows_logo_-_2021.svg) 16 16, auto';
-    } else if (os.name.toLowerCase().includes('mac')) {
-      document.body.style.cursor = 'url(https://upload.wikimedia.org/wikipedia/commons/2/24/MacOS_logo.svg) 16 16, auto';
-    } else if (os.name.toLowerCase().includes('ubuntu') || os.name.toLowerCase().includes('debian') || os.name.toLowerCase().includes('fedora') || os.name.toLowerCase().includes('linux')) {
-      document.body.style.cursor = 'url(https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg) 16 16, auto';
-    } else {
-      document.body.style.cursor = 'pointer';
-    }
-  });
-  li.addEventListener('mouseleave', () => {
-    document.body.style.cursor = 'auto';
-  });
-  return li;
-}
-
-function createSoftwareItem(soft) {
-  const li = document.createElement('li');
-  li.tabIndex = 0;
-  li.setAttribute('role', 'listitem');
-  li.innerHTML = `
-    <img src="${soft.logo}" alt="${soft.name} logo" class="software-logo" loading="lazy" />
-    <strong>${soft.name}</strong>
-    <a href="${soft.url}" target="_blank" rel="noopener noreferrer" class="download-btn" aria-label="Download ${soft.name}">Download</a>
-  `;
-  return li;
-}
-
-function populateLists() {
-  const modernList = document.getElementById('modern-os-list');
-  osData.modern.forEach(os => {
-    modernList.appendChild(createOSItem(os));
+  // Hide loading screen after page load
+  window.addEventListener('load', () => {
+    const loading = document.getElementById('loading');
+    loading.style.opacity = '0';
+    setTimeout(() => loading.style.display = 'none', 500);
   });
 
-  const deprecatedList = document.getElementById('deprecated-os-list');
-  osData.deprecated.forEach(os => {
-    deprecatedList.appendChild(createOSItem(os));
+  // Navigation Buttons Show/Hide Sections
+  const navButtons = document.querySelectorAll('#nav-buttons button');
+  const sections = document.querySelectorAll('.os-section');
+
+  navButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      navButtons.forEach(b => b.classList.remove('active'));
+      button.classList.add('active');
+      const target = button.getAttribute('data-target');
+      sections.forEach(section => {
+        if (section.id === target) {
+          section.style.display = 'block';
+          section.style.animation = 'fadeUp 1s ease forwards';
+        } else {
+          section.style.display = 'none';
+        }
+      });
+
+      // Change cursor dynamically
+      switch(target) {
+        case 'windows':
+          document.body.style.cursor = "url('cursors/windows.cur'), auto";
+          break;
+        case 'linux':
+          document.body.style.cursor = "url('cursors/linux.cur'), auto";
+          break;
+        case 'bsd':
+          document.body.style.cursor = "url('cursors/bsd.cur'), auto";
+          break;
+        case 'chromeos':
+          document.body.style.cursor = "url('cursors/chromeos.cur'), auto";
+          break;
+        case 'retro':
+          document.body.style.cursor = "url('cursors/retro.cur'), auto";
+          break;
+        case 'hackintosh':
+          document.body.style.cursor = "url('cursors/mac.cur'), auto";
+          break;
+        case 'meme':
+          document.body.style.cursor = "url('cursors/doge.cur'), auto";
+          break;
+        default:
+          document.body.style.cursor = 'auto';
+      }
+    });
   });
 
-  const memeList = document.getElementById('meme-os-list');
-  osData.meme.forEach(os => {
-    memeList.appendChild(createOSItem(os));
-  });
-
-  const softwareList = document.getElementById('software-list');
-  softwareData.forEach(soft => {
-    softwareList.appendChild(createSoftwareItem(soft));
-  });
-}
-populateLists();
-
-// Contact form submission dummy handler
-function submitForm(e) {
-  e.preventDefault();
-  const feedback = document.getElementById('form-feedback');
-  feedback.style.color = '#ffb3ff';
-  feedback.textContent = 'Thank you for your message! We will get back to you soon.';
-  e.target.reset();
-  return false;
-}
+  // Initialize first cursor
+  document.body.style.cursor = "url('cursors/windows.cur'), auto";
 </script>
-
 </body>
 </html>
